@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: BML Gateway for Woocommerce by WDM
+ * Plugin Name: BML Gateway by WDM
  * Plugin URI: https://github.com/wdmv/woocommerce-bml-gateway
  * Description: A third party implementation of BML payment gateway for woocommerce, by WDM
  * Version: 1.0.0
@@ -13,7 +13,7 @@
  * Requires PHP: 7.4
  * Requires at least: 5.8
  * WC requires at least: 6.0
- * WC tested up to: 8.5
+ * WC tested up to: 10.4.3
  *
  * @package BML_Gateway
  *
