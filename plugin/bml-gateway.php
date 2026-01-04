@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Bank of Maldives Payment Gateway for WooCommerce
+ * Plugin Name: BML Gateway for Woocommerce by WDM
  * Plugin URI: https://github.com/wdmv/woocommerce-bml-gateway
- * Description: Bank of Maldives (BML) payment gateway integration for WooCommerce. Allows customers to pay securely using BML payment gateway.
+ * Description: A third party implementation of BML payment gateway for woocommerce, by WDM
  * Version: 1.0.0
  * Author: WDM
  * Author URI: https://wdm.mv
@@ -131,7 +131,7 @@ class BML_Gateway
 		require_once BML_GATEWAY_PLUGIN_DIR . 'includes/class-bml-gateway-payment-gateway.php';
 
 		// Always load blocks support - the file will check if classes are available.
-		require_once BML_GATEWAY_PLUGIN_DIR . 'includes/class-bml-gateway-blocks.php';
+		require_once BML_GATEWAY_PLUGIN_DIR . 'includes/class-bml-gateway-blocks-integration.php';
 	}
 
 	/**
@@ -139,19 +139,20 @@ class BML_Gateway
 	 *
 	 * @return bool
 	 */
-	protected function is_woocommerce_blocks_active() {
+	protected function is_woocommerce_blocks_active()
+	{
 		// Check if the blocks package is active (common in WooCommerce 8.0+)
-		if ( class_exists( 'Automattic\WooCommerce\Blocks\Package' ) ) {
+		if (class_exists('Automattic\WooCommerce\Blocks\Package')) {
 			return true;
 		}
 
 		// Check if any block-based features are active via WooCommerce settings
-		if ( function_exists( 'wc_current_theme_is_fse_theme' ) && wc_current_theme_is_fse_theme() ) {
+		if (function_exists('wc_current_theme_is_fse_theme') && wc_current_theme_is_fse_theme()) {
 			return true;
 		}
 
 		// Check for block theme
-		if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
+		if (function_exists('wp_is_block_theme') && wp_is_block_theme()) {
 			return true;
 		}
 
@@ -274,7 +275,7 @@ BML_Gateway::get_instance();
 /**
  * Plugin activation hook.
  */
-register_activation_hook(__FILE__, function() {
+register_activation_hook(__FILE__, function () {
 	BML_Gateway::get_instance()->add_endpoint();
 	flush_rewrite_rules();
 });
@@ -282,6 +283,6 @@ register_activation_hook(__FILE__, function() {
 /**
  * Plugin deactivation hook.
  */
-register_deactivation_hook(__FILE__, function() {
+register_deactivation_hook(__FILE__, function () {
 	flush_rewrite_rules();
 });
