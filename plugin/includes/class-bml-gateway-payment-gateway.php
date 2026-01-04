@@ -113,6 +113,7 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 		$is_available = 'yes' === $this->enabled;
 
 		// Allow other plugins to filter availability.
+		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Core WooCommerce hook.
 		return apply_filters('woocommerce_payment_gateway_is_available', $is_available, $this);
 	}
 
@@ -422,6 +423,7 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 		$transaction = $this->create_transaction($order);
 
 		if (is_wp_error($transaction)) {
+			/* translators: %s: error message */
 			wc_add_notice(sprintf(__('Payment error: %s', 'bml-gateway'), $transaction->get_error_message()), 'error');
 			return array(
 				'result' => 'failure',
@@ -537,6 +539,7 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 			case 'CONFIRMED':
 				if (!$order->is_paid()) {
 					$order->payment_complete($transaction_id);
+					/* translators: %s: transaction ID */
 					$order->add_order_note(sprintf(__('BML payment confirmed via webhook. Transaction ID: %s', 'bml-gateway'), $transaction_id));
 					$this->log(sprintf('Order %s marked as paid via webhook', $order->get_id()));
 				}
@@ -569,6 +572,12 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 	 * Return handler for customer redirects from BML payment page.
 	 *
 	 * Handles GET requests when customers return from BML after payment.
+	 *
+	 * Note: WordPress nonce verification is not used here as this endpoint
+	 * receives redirects from an external payment gateway where traditional
+	 * nonces cannot be validated. Security is provided by:
+	 * 1. Order key validation with hash_equals()
+	 * 2. Transaction verification via BML API
 	 */
 	public function return_handler()
 	{
@@ -578,7 +587,9 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 		// Log customer return received.
 		$this->log('Customer return from BML payment page. Processing and verifying transaction.');
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Order key validation is used instead for payment gateway returns.
 		$order_id = isset($_GET['order_id']) ? absint($_GET['order_id']) : 0;
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Order key validation is used instead for payment gateway returns.
 		$order_key = isset($_GET['order_key']) ? sanitize_text_field(wp_unslash($_GET['order_key'])) : '';
 
 		// Validate order.
@@ -614,6 +625,7 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 
 		if (is_wp_error($status)) {
 			$this->log('Callback error: Could not verify payment status - ' . $status->get_error_message());
+			/* translators: %s: error message */
 			wc_add_notice(sprintf(__('Could not verify payment status: %s', 'bml-gateway'), $status->get_error_message()), 'error');
 			wp_safe_redirect($this->get_return_url($order));
 			exit;
@@ -693,6 +705,7 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 				if (!$order->is_paid()) {
 					$transaction_id = $status['id'] ?? '';
 					$order->payment_complete($transaction_id);
+					/* translators: %s: transaction ID */
 					$order->add_order_note(sprintf(__('BML payment completed. Transaction ID: %s', 'bml-gateway'), $transaction_id));
 				}
 				break;

@@ -1,8 +1,8 @@
-=== Bank of Maldives Payment Gateway for WooCommerce ===
+=== BML Gateway for Woocommerce by WDM ===
 Contributors: wdmv
-Tags: woocommerce, payment gateway, bml, bank of maldives, maldives, checkout, payment
+Tags: woocommerce, payment gateway, bml, bank of maldives, maldives
 Requires at least: 5.8
-Tested up to: 6.7
+Tested up to: 6.9
 Requires PHP: 7.4
 WC requires at least: 6.0
 WC tested up to: 9.3

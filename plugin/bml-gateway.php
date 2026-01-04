@@ -172,8 +172,8 @@ class BML_Gateway
 		// Include required files after WooCommerce is loaded.
 		$this->includes();
 
-		// Load plugin text domain.
-		load_plugin_textdomain('bml-gateway', false, dirname(BML_GATEWAY_PLUGIN_BASENAME) . '/languages');
+		// Note: Since WordPress 4.6, load_plugin_textdomain() is not required
+		// for plugins hosted on WordPress.org as translations are loaded automatically.
 
 		// Add the gateway to WooCommerce.
 		add_filter('woocommerce_payment_gateways', array($this, 'add_gateway'));

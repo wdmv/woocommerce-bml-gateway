@@ -133,6 +133,7 @@ add_action(
 		$is_store_api_request = false;
 
 		// Check query string route (pretty permalinks disabled).
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check for REST API route detection.
 		if ( isset( $_GET['rest_route'] ) ) {
 			$route = sanitize_text_field( wp_unslash( $_GET['rest_route'] ) );
 			// Match /wc/store/v1/checkout, /wc/store/v2/checkout, /wc/store/checkout, etc.
@@ -142,6 +143,7 @@ add_action(
 		}
 
 		// Check rewrite rule (pretty permalinks enabled).
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check for REST API route detection.
 		if ( ! $is_store_api_request && isset( $_SERVER['REQUEST_URI'] ) ) {
 			$uri = sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) );
 			// Match wp-json/wc/store/... checkout endpoints.
