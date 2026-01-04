@@ -82,8 +82,8 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 		$this->id = 'bml_gateway';
 		$this->icon = BML_GATEWAY_PLUGIN_URL . 'assets/images/bml.webp';
 		$this->has_fields = false; // Redirect method doesn't need payment fields
-		$this->method_title = __('BML Gateway by WDM', 'bml-gateway');
-		$this->method_description = __('Pay securely using Bank of Maldives payment gateway via redirect method.', 'bml-gateway');
+		$this->method_title = __('BML Gateway by WDM', 'bml-gateway-by-wdm');
+		$this->method_description = __('Pay securely using Bank of Maldives payment gateway via redirect method.', 'bml-gateway-by-wdm');
 
 		// Load the settings.
 		$this->init_form_fields();
@@ -124,78 +124,78 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 	{
 		$this->form_fields = array(
 			'enabled' => array(
-				'title' => __('Enable/Disable', 'bml-gateway'),
+				'title' => __('Enable/Disable', 'bml-gateway-by-wdm'),
 				'type' => 'checkbox',
-				'label' => __('Enable Bank of Maldives Payment Gateway', 'bml-gateway'),
+				'label' => __('Enable Bank of Maldives Payment Gateway', 'bml-gateway-by-wdm'),
 				'default' => 'yes',
 			),
 			'title' => array(
-				'title' => __('Title', 'bml-gateway'),
+				'title' => __('Title', 'bml-gateway-by-wdm'),
 				'type' => 'text',
-				'description' => __('This controls the title which the user sees during checkout.', 'bml-gateway'),
-				'default' => __('Bank of Maldives', 'bml-gateway'),
+				'description' => __('This controls the title which the user sees during checkout.', 'bml-gateway-by-wdm'),
+				'default' => __('Bank of Maldives', 'bml-gateway-by-wdm'),
 				'desc_tip' => true,
 			),
 			'description' => array(
-				'title' => __('Description', 'bml-gateway'),
+				'title' => __('Description', 'bml-gateway-by-wdm'),
 				'type' => 'textarea',
-				'description' => __('This controls the description which the user sees during checkout.', 'bml-gateway'),
-				'default' => __('Pay securely using your BML account.', 'bml-gateway'),
+				'description' => __('This controls the description which the user sees during checkout.', 'bml-gateway-by-wdm'),
+				'default' => __('Pay securely using your BML account.', 'bml-gateway-by-wdm'),
 				'desc_tip' => true,
 			),
 			'testmode' => array(
-				'title' => __('Test Mode', 'bml-gateway'),
+				'title' => __('Test Mode', 'bml-gateway-by-wdm'),
 				'type' => 'checkbox',
-				'label' => __('Enable Test Mode', 'bml-gateway'),
+				'label' => __('Enable Test Mode', 'bml-gateway-by-wdm'),
 				'default' => 'yes',
-				'description' => __('Use the testing environment instead of production.', 'bml-gateway'),
+				'description' => __('Use the testing environment instead of production.', 'bml-gateway-by-wdm'),
 			),
 			'connection_details' => array(
-				'title' => __('Connection Details', 'bml-gateway'),
+				'title' => __('Connection Details', 'bml-gateway-by-wdm'),
 				'type' => 'title',
-				'description' => __('Enter your BML Connect API credentials. Get these from the <a href="https://dashboard.merchants.bankofmaldives.com.mv" target="_blank">BML Merchant Portal</a>.', 'bml-gateway'),
+				'description' => __('Enter your BML Connect API credentials. Get these from the <a href="https://dashboard.merchants.bankofmaldives.com.mv" target="_blank">BML Merchant Portal</a>.', 'bml-gateway-by-wdm'),
 			),
 			'app_id' => array(
-				'title' => __('App ID', 'bml-gateway'),
+				'title' => __('App ID', 'bml-gateway-by-wdm'),
 				'type' => 'text',
-				'description' => __('Enter your App ID (client_id) from BML Connect.', 'bml-gateway'),
+				'description' => __('Enter your App ID (client_id) from BML Connect.', 'bml-gateway-by-wdm'),
 				'default' => '',
 				'desc_tip' => true,
 			),
 			'api_key' => array(
-				'title' => __('API Key', 'bml-gateway'),
+				'title' => __('API Key', 'bml-gateway-by-wdm'),
 				'type' => 'password',
-				'description' => __('Enter your API Key (client_secret) from BML Connect.', 'bml-gateway'),
+				'description' => __('Enter your API Key (client_secret) from BML Connect.', 'bml-gateway-by-wdm'),
 				'default' => '',
 				'desc_tip' => true,
 			),
 			'currency' => array(
-				'title' => __('Transaction Currency', 'bml-gateway'),
+				'title' => __('Transaction Currency', 'bml-gateway-by-wdm'),
 				'type' => 'select',
-				'description' => __('Select the currency for transactions.', 'bml-gateway'),
+				'description' => __('Select the currency for transactions.', 'bml-gateway-by-wdm'),
 				'default' => 'MVR',
 				'desc_tip' => true,
 				'options' => array(
-					'MVR' => __('MVR - Maldivian Rufiyaa', 'bml-gateway'),
-					'USD' => __('USD - US Dollar', 'bml-gateway'),
+					'MVR' => __('MVR - Maldivian Rufiyaa', 'bml-gateway-by-wdm'),
+					'USD' => __('USD - US Dollar', 'bml-gateway-by-wdm'),
 				),
 			),
 			'webhook_info' => array(
-				'title' => __('Webhook Configuration', 'bml-gateway'),
+				'title' => __('Webhook Configuration', 'bml-gateway-by-wdm'),
 				'type' => 'title',
 				'description' => $this->get_webhook_description_safe(),
 			),
 			'endpoint_info' => array(
-				'title' => __('Endpoint Information', 'bml-gateway'),
+				'title' => __('Endpoint Information', 'bml-gateway-by-wdm'),
 				'type' => 'title',
 				'description' => $this->get_endpoint_description_safe(),
 			),
 			'disable_redirect' => array(
-				'title' => __('Disable Redirect (Testing)', 'bml-gateway'),
+				'title' => __('Disable Redirect (Testing)', 'bml-gateway-by-wdm'),
 				'type' => 'checkbox',
-				'label' => __('Disable customer redirect after payment (for webhook testing only)', 'bml-gateway'),
+				'label' => __('Disable customer redirect after payment (for webhook testing only)', 'bml-gateway-by-wdm'),
 				'default' => 'no',
-				'description' => __('When enabled, customers will not be redirected after payment. The webhook will still be processed. This is useful for testing webhooks without customer redirects.', 'bml-gateway'),
+				'description' => __('When enabled, customers will not be redirected after payment. The webhook will still be processed. This is useful for testing webhooks without customer redirects.', 'bml-gateway-by-wdm'),
 				'desc_tip' => true,
 			),
 		);
@@ -209,7 +209,7 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 	protected function get_webhook_description_safe()
 	{
 		if (!function_exists('home_url')) {
-			return __('Configure your webhook URL in the <a href="https://dashboard.merchants.bankofmaldives.com.mv" target="_blank">BML Merchant Portal</a> to receive server-to-server payment notifications.', 'bml-gateway');
+			return __('Configure your webhook URL in the <a href="https://dashboard.merchants.bankofmaldives.com.mv" target="_blank">BML Merchant Portal</a> to receive server-to-server payment notifications.', 'bml-gateway-by-wdm');
 		}
 
 		$webhook_url_pretty = home_url('/bml-gateway/webhook');
@@ -217,7 +217,7 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 
 		return sprintf(
 			/* translators: 1: pretty permalink webhook URL, 2: plain permalink webhook URL */
-			__('Configure your webhook URL in the <a href="https://dashboard.merchants.bankofmaldives.com.mv" target="_blank">BML Merchant Portal</a> to receive server-to-server payment notifications (POST).<br><strong>Webhook URL:</strong> <code style="background:#f0f0f1;padding:4px 8px;border-radius:3px;font-size:12px;">%1$s</code><br>or (plain permalinks): <code style="background:#f0f0f1;padding:4px 8px;border-radius:3px;font-size:12px;">%2$s</code>', 'bml-gateway'),
+			__('Configure your webhook URL in the <a href="https://dashboard.merchants.bankofmaldives.com.mv" target="_blank">BML Merchant Portal</a> to receive server-to-server payment notifications (POST).<br><strong>Webhook URL:</strong> <code style="background:#f0f0f1;padding:4px 8px;border-radius:3px;font-size:12px;">%1$s</code><br>or (plain permalinks): <code style="background:#f0f0f1;padding:4px 8px;border-radius:3px;font-size:12px;">%2$s</code>', 'bml-gateway-by-wdm'),
 			esc_html($webhook_url_pretty),
 			esc_html($webhook_url_plain)
 		);
@@ -231,7 +231,7 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 	protected function get_endpoint_description_safe()
 	{
 		if (!function_exists('home_url')) {
-			return __('Webhook and return endpoints are automatically configured.', 'bml-gateway');
+			return __('Webhook and return endpoints are automatically configured.', 'bml-gateway-by-wdm');
 		}
 
 		$webhook_url_pretty = home_url('/bml-gateway/webhook');
@@ -241,7 +241,7 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 
 		return sprintf(
 			/* translators: 1: pretty webhook URL, 2: plain webhook URL, 3: pretty return URL, 4: plain return URL */
-			__('<strong>Webhook Endpoint</strong> (for BML server-to-server notifications):<br><code style="background:#f0f0f1;padding:4px 8px;border-radius:3px;font-size:12px;">%1$s</code> or <code style="background:#f0f0f1;padding:4px 8px;border-radius:3px;font-size:12px;">%2$s</code><br><br><strong>Return Endpoint</strong> (for customer redirects after payment):<br><code style="background:#f0f0f1;padding:4px 8px;border-radius:3px;font-size:12px;">%3$s</code> or <code style="background:#f0f0f1;padding:4px 8px;border-radius:3px;font-size:12px;">%4$s</code>', 'bml-gateway'),
+			__('<strong>Webhook Endpoint</strong> (for BML server-to-server notifications):<br><code style="background:#f0f0f1;padding:4px 8px;border-radius:3px;font-size:12px;">%1$s</code> or <code style="background:#f0f0f1;padding:4px 8px;border-radius:3px;font-size:12px;">%2$s</code><br><br><strong>Return Endpoint</strong> (for customer redirects after payment):<br><code style="background:#f0f0f1;padding:4px 8px;border-radius:3px;font-size:12px;">%3$s</code> or <code style="background:#f0f0f1;padding:4px 8px;border-radius:3px;font-size:12px;">%4$s</code>', 'bml-gateway-by-wdm'),
 			esc_html($webhook_url_pretty),
 			esc_html($webhook_url_plain),
 			esc_html($return_url_pretty),
@@ -347,11 +347,11 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 		if (201 !== $response_code && 200 !== $response_code) {
 			// Handle 401 Unauthorized specifically with more details.
 			if (401 === $response_code) {
-				$error_message = isset($response_body_decoded['message']) ? $response_body_decoded['message'] : __('Unauthorized - Please check your App ID and API Key', 'bml-gateway');
+				$error_message = isset($response_body_decoded['message']) ? $response_body_decoded['message'] : __('Unauthorized - Please check your App ID and API Key', 'bml-gateway-by-wdm');
 				return new WP_Error('api_error', $error_message, $response_body_decoded);
 			}
 
-			$error_message = isset($response_body_decoded['message']) ? $response_body_decoded['message'] : __('Unknown API error', 'bml-gateway');
+			$error_message = isset($response_body_decoded['message']) ? $response_body_decoded['message'] : __('Unknown API error', 'bml-gateway-by-wdm');
 			return new WP_Error('api_error', $error_message, $response_body_decoded);
 		}
 
@@ -420,10 +420,10 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 
 		// Check if credentials are configured.
 		if (empty($this->app_id) || empty($this->api_key)) {
-			wc_add_notice(__('Payment gateway is not configured properly. Please contact the site administrator.', 'bml-gateway'), 'error');
+			wc_add_notice(__('Payment gateway is not configured properly. Please contact the site administrator.', 'bml-gateway-by-wdm'), 'error');
 			return array(
 				'result' => 'failure',
-				'message' => __('Payment gateway configuration error.', 'bml-gateway'),
+				'message' => __('Payment gateway configuration error.', 'bml-gateway-by-wdm'),
 			);
 		}
 
@@ -432,7 +432,7 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 
 		if (is_wp_error($transaction)) {
 			/* translators: %s: error message */
-			wc_add_notice(sprintf(__('Payment error: %s', 'bml-gateway'), $transaction->get_error_message()), 'error');
+			wc_add_notice(sprintf(__('Payment error: %s', 'bml-gateway-by-wdm'), $transaction->get_error_message()), 'error');
 			return array(
 				'result' => 'failure',
 				'message' => $transaction->get_error_message(),
@@ -445,7 +445,7 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 		}
 
 		// Mark order as pending payment.
-		$order->update_status('pending', __('Waiting for BML payment confirmation.', 'bml-gateway'));
+		$order->update_status('pending', __('Waiting for BML payment confirmation.', 'bml-gateway-by-wdm'));
 		$order->save();
 
 		// Redirect to BML payment page.
@@ -457,10 +457,10 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 		}
 
 		// Fallback if no URL returned.
-		wc_add_notice(__('Payment error: No redirect URL received from BML.', 'bml-gateway'), 'error');
+		wc_add_notice(__('Payment error: No redirect URL received from BML.', 'bml-gateway-by-wdm'), 'error');
 		return array(
 			'result' => 'failure',
-			'message' => __('Unable to redirect to payment page.', 'bml-gateway'),
+			'message' => __('Unable to redirect to payment page.', 'bml-gateway-by-wdm'),
 		);
 	}
 
@@ -548,23 +548,23 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 				if (!$order->is_paid()) {
 					$order->payment_complete($transaction_id);
 					/* translators: %s: transaction ID */
-					$order->add_order_note(sprintf(__('BML payment confirmed via webhook. Transaction ID: %s', 'bml-gateway'), $transaction_id));
+					$order->add_order_note(sprintf(__('BML payment confirmed via webhook. Transaction ID: %s', 'bml-gateway-by-wdm'), $transaction_id));
 					$this->log(sprintf('Order %s marked as paid via webhook', $order->get_id()));
 				}
 				break;
 
 			case 'CANCELLED':
-				$order->update_status('cancelled', __('Payment was cancelled via webhook.', 'bml-gateway'));
+				$order->update_status('cancelled', __('Payment was cancelled via webhook.', 'bml-gateway-by-wdm'));
 				$this->log(sprintf('Order %s cancelled via webhook', $order->get_id()));
 				break;
 
 			case 'REFUNDED':
-				$order->update_status('refunded', __('Payment was refunded via webhook.', 'bml-gateway'));
+				$order->update_status('refunded', __('Payment was refunded via webhook.', 'bml-gateway-by-wdm'));
 				$this->log(sprintf('Order %s refunded via webhook', $order->get_id()));
 				break;
 
 			case 'REFUND_REQUESTED':
-				$order->update_status('on-hold', __('Refund requested via webhook.', 'bml-gateway'));
+				$order->update_status('on-hold', __('Refund requested via webhook.', 'bml-gateway-by-wdm'));
 				$this->log(sprintf('Order %s - refund requested via webhook', $order->get_id()));
 				break;
 
@@ -605,7 +605,7 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 
 		if (!$order) {
 			$this->log('Callback error: Invalid order.');
-			wc_add_notice(__('Invalid order.', 'bml-gateway'), 'error');
+			wc_add_notice(__('Invalid order.', 'bml-gateway-by-wdm'), 'error');
 			wp_safe_redirect(wc_get_page_permalink('shop'));
 			exit;
 		}
@@ -613,7 +613,7 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 		// Validate order key.
 		if (!hash_equals($order->get_order_key(), $order_key)) {
 			$this->log('Callback error: Invalid order key.');
-			wc_add_notice(__('Invalid order key.', 'bml-gateway'), 'error');
+			wc_add_notice(__('Invalid order key.', 'bml-gateway-by-wdm'), 'error');
 			wp_safe_redirect(wc_get_page_permalink('shop'));
 			exit;
 		}
@@ -623,7 +623,7 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 
 		if (empty($transaction_id)) {
 			$this->log('Callback error: Transaction not found.');
-			wc_add_notice(__('Transaction not found.', 'bml-gateway'), 'error');
+			wc_add_notice(__('Transaction not found.', 'bml-gateway-by-wdm'), 'error');
 			wp_safe_redirect($this->get_return_url($order));
 			exit;
 		}
@@ -634,7 +634,7 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 		if (is_wp_error($status)) {
 			$this->log('Callback error: Could not verify payment status - ' . $status->get_error_message());
 			/* translators: %s: error message */
-			wc_add_notice(sprintf(__('Could not verify payment status: %s', 'bml-gateway'), $status->get_error_message()), 'error');
+			wc_add_notice(sprintf(__('Could not verify payment status: %s', 'bml-gateway-by-wdm'), $status->get_error_message()), 'error');
 			wp_safe_redirect($this->get_return_url($order));
 			exit;
 		}
@@ -692,7 +692,7 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 		$response_body = json_decode(wp_remote_retrieve_body($response), true);
 
 		if (200 !== $response_code) {
-			return new WP_Error('api_error', __('Failed to query transaction status.', 'bml-gateway'));
+			return new WP_Error('api_error', __('Failed to query transaction status.', 'bml-gateway-by-wdm'));
 		}
 
 		return $response_body;
@@ -714,20 +714,20 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 					$transaction_id = $status['id'] ?? '';
 					$order->payment_complete($transaction_id);
 					/* translators: %s: transaction ID */
-					$order->add_order_note(sprintf(__('BML payment completed. Transaction ID: %s', 'bml-gateway'), $transaction_id));
+					$order->add_order_note(sprintf(__('BML payment completed. Transaction ID: %s', 'bml-gateway-by-wdm'), $transaction_id));
 				}
 				break;
 
 			case 'CANCELLED':
-				$order->update_status('cancelled', __('Payment was cancelled by the customer.', 'bml-gateway'));
-				wc_add_notice(__('Your payment has been cancelled.', 'bml-gateway'), 'notice');
+				$order->update_status('cancelled', __('Payment was cancelled by the customer.', 'bml-gateway-by-wdm'));
+				wc_add_notice(__('Your payment has been cancelled.', 'bml-gateway-by-wdm'), 'notice');
 				break;
 
 			case 'QR_CODE_GENERATED':
 			default:
 				// Payment still pending.
-				$order->update_status('pending', __('Waiting for BML payment confirmation.', 'bml-gateway'));
-				wc_add_notice(__('Your payment is being processed. You will receive a confirmation shortly.', 'bml-gateway'), 'notice');
+				$order->update_status('pending', __('Waiting for BML payment confirmation.', 'bml-gateway-by-wdm'));
+				wc_add_notice(__('Your payment is being processed. You will receive a confirmation shortly.', 'bml-gateway-by-wdm'), 'notice');
 				break;
 		}
 	}

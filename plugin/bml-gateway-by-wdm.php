@@ -3,12 +3,12 @@
  * Plugin Name: BML Gateway by WDM
  * Plugin URI: https://github.com/wdmv/woocommerce-bml-gateway
  * Description: A third party implementation of BML payment gateway for woocommerce, by WDM
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: WDM
  * Author URI: https://wdm.mv
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: bml-gateway
+ * Text Domain: bml-gateway-by-wdm
  * Domain Path: /languages
  * Requires PHP: 7.4
  * Requires at least: 5.8
@@ -202,7 +202,7 @@ class BML_Gateway
 		?>
 		<div class="notice notice-error">
 			<p>
-				<?php esc_html_e('Bank of Maldives Payment Gateway requires WooCommerce to be installed and active.', 'bml-gateway'); ?>
+				<?php esc_html_e('Bank of Maldives Payment Gateway requires WooCommerce to be installed and active.', 'bml-gateway-by-wdm'); ?>
 			</p>
 		</div>
 		<?php
@@ -241,8 +241,10 @@ class BML_Gateway
 	public function handle_webhook_request()
 	{
 		// Check for webhook via query var (pretty permalinks) or GET param (plain permalinks).
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Webhook receives external POST from BML, verified via signature.
 		$is_webhook = get_query_var('bml_webhook') || isset($_GET['bml_webhook']) && '1' === $_GET['bml_webhook'];
 		// Check for return via query var (pretty permalinks) or GET param (plain permalinks).
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Return endpoint receives external redirect from BML, verified via order key.
 		$is_return = get_query_var('bml_return') || isset($_GET['bml_return']) && '1' === $_GET['bml_return'];
 
 		// Check if this is the webhook endpoint.

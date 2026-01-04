@@ -1,4 +1,4 @@
-=== BML Gateway for Woocommerce by WDM ===
+=== BML Gateway by WDM ===
 Contributors: wdmv
 Tags: woocommerce, payment gateway, bml, bank of maldives, maldives
 Requires at least: 5.8
