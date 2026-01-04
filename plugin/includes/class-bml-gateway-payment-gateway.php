@@ -212,12 +212,14 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 			return __('Configure your webhook URL in the <a href="https://dashboard.merchants.bankofmaldives.com.mv" target="_blank">BML Merchant Portal</a> to receive server-to-server payment notifications.', 'bml-gateway');
 		}
 
-		$webhook_url = home_url('/bml-gateway/webhook');
+		$webhook_url_pretty = home_url('/bml-gateway/webhook');
+		$webhook_url_plain = add_query_arg(['bml_webhook' => '1'], home_url('/'));
 
 		return sprintf(
-			/* translators: %s: webhook URL */
-			__('Configure your webhook URL in the <a href="https://dashboard.merchants.bankofmaldives.com.mv" target="_blank">BML Merchant Portal</a> to receive server-to-server payment notifications (POST).<br><strong>Webhook URL:</strong> <code style="background:#f0f0f1;padding:4px 8px;border-radius:3px;font-size:12px;">%s</code>', 'bml-gateway'),
-			esc_html($webhook_url)
+			/* translators: 1: pretty permalink webhook URL, 2: plain permalink webhook URL */
+			__('Configure your webhook URL in the <a href="https://dashboard.merchants.bankofmaldives.com.mv" target="_blank">BML Merchant Portal</a> to receive server-to-server payment notifications (POST).<br><strong>Webhook URL:</strong> <code style="background:#f0f0f1;padding:4px 8px;border-radius:3px;font-size:12px;">%1$s</code><br>or (plain permalinks): <code style="background:#f0f0f1;padding:4px 8px;border-radius:3px;font-size:12px;">%2$s</code>', 'bml-gateway'),
+			esc_html($webhook_url_pretty),
+			esc_html($webhook_url_plain)
 		);
 	}
 
@@ -232,14 +234,18 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 			return __('Webhook and return endpoints are automatically configured.', 'bml-gateway');
 		}
 
-		$webhook_url = home_url('/bml-gateway/webhook');
-		$return_url = home_url('/bml-gateway/return');
+		$webhook_url_pretty = home_url('/bml-gateway/webhook');
+		$webhook_url_plain = add_query_arg(['bml_webhook' => '1'], home_url('/'));
+		$return_url_pretty = home_url('/bml-gateway/return');
+		$return_url_plain = add_query_arg(['bml_return' => '1'], home_url('/'));
 
 		return sprintf(
-			/* translators: 1: webhook URL, 2: return URL */
-			__('<strong>Webhook Endpoint</strong> (for BML server-to-server notifications):<br><code style="background:#f0f0f1;padding:4px 8px;border-radius:3px;font-size:12px;">%1$s</code><br><br><strong>Return Endpoint</strong> (for customer redirects after payment):<br><code style="background:#f0f0f1;padding:4px 8px;border-radius:3px;font-size:12px;">%2$s</code>', 'bml-gateway'),
-			esc_html($webhook_url),
-			esc_html($return_url)
+			/* translators: 1: pretty webhook URL, 2: plain webhook URL, 3: pretty return URL, 4: plain return URL */
+			__('<strong>Webhook Endpoint</strong> (for BML server-to-server notifications):<br><code style="background:#f0f0f1;padding:4px 8px;border-radius:3px;font-size:12px;">%1$s</code> or <code style="background:#f0f0f1;padding:4px 8px;border-radius:3px;font-size:12px;">%2$s</code><br><br><strong>Return Endpoint</strong> (for customer redirects after payment):<br><code style="background:#f0f0f1;padding:4px 8px;border-radius:3px;font-size:12px;">%3$s</code> or <code style="background:#f0f0f1;padding:4px 8px;border-radius:3px;font-size:12px;">%4$s</code>', 'bml-gateway'),
+			esc_html($webhook_url_pretty),
+			esc_html($webhook_url_plain),
+			esc_html($return_url_pretty),
+			esc_html($return_url_plain)
 		);
 	}
 
@@ -286,12 +292,14 @@ class BML_Gateway_Payment_Gateway extends WC_Payment_Gateway
 		$amount = (int) round($order->get_total() * 100);
 
 		// Generate return URL for customer redirect after payment.
+		// Use query parameter format for plain permalink compatibility.
 		$return_url = add_query_arg(
 			array(
+				'bml_return' => '1',
 				'order_id' => $order->get_id(),
 				'order_key' => $order->get_order_key(),
 			),
-			home_url('/bml-gateway/return')
+			home_url('/')
 		);
 
 		// Generate signature for debug.

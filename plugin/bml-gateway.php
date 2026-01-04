@@ -234,11 +234,19 @@ class BML_Gateway
 
 	/**
 	 * Handle webhook request (BML server-to-server POST).
+	 *
+	 * Supports both rewrite rules (pretty permalinks) and query parameters
+	 * (plain permalinks) for maximum compatibility.
 	 */
 	public function handle_webhook_request()
 	{
+		// Check for webhook via query var (pretty permalinks) or GET param (plain permalinks).
+		$is_webhook = get_query_var('bml_webhook') || isset($_GET['bml_webhook']) && '1' === $_GET['bml_webhook'];
+		// Check for return via query var (pretty permalinks) or GET param (plain permalinks).
+		$is_return = get_query_var('bml_return') || isset($_GET['bml_return']) && '1' === $_GET['bml_return'];
+
 		// Check if this is the webhook endpoint.
-		if (get_query_var('bml_webhook')) {
+		if ($is_webhook) {
 			// Ensure WooCommerce is loaded.
 			if (!$this->woocommerce_is_active()) {
 				status_header(404);
@@ -253,7 +261,7 @@ class BML_Gateway
 		}
 
 		// Check if this is the return endpoint.
-		if (get_query_var('bml_return')) {
+		if ($is_return) {
 			// Ensure WooCommerce is loaded.
 			if (!$this->woocommerce_is_active()) {
 				status_header(404);
