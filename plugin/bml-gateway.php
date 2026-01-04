@@ -6,8 +6,8 @@
  * Version: 1.0.0
  * Author: WDM
  * Author URI: https://wdm.mv
- * License: DBAD
- * License URI: https://dbad-license.org
+ * License: GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: bml-gateway
  * Domain Path: /languages
  * Requires PHP: 7.4

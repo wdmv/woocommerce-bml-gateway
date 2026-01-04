@@ -1,0 +1,256 @@
+# Copyright (C) 2025 WDM
+# This file is distributed under the same license as the Bank of Maldives Payment Gateway for WooCommerce plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Bank of Maldives Payment Gateway for WooCommerce 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/wdmv/woocommerce-bml-gateway/issues\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-01-04T00:00:00+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.0\n"
+"X-Domain: bml-gateway\n"
+
+#. Plugin Name of the plugin
+msgid "Bank of Maldives Payment Gateway for WooCommerce"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://github.com/wdmv/woocommerce-bml-gateway"
+msgstr ""
+
+#. Description of the plugin
+msgid "Bank of Maldives (BML) payment gateway integration for WooCommerce. Allows customers to pay securely using BML payment gateway."
+msgstr ""
+
+#. Author of the plugin
+msgid "WDM"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://wdm.mv"
+msgstr ""
+
+#: bml-gateway.php:204
+msgid "Bank of Maldives Payment Gateway requires WooCommerce to be installed and active."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:72
+msgid "BML Gateway by WDM"
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:73
+msgid "Pay securely using Bank of Maldives payment gateway via redirect method."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:113
+msgid "Enable/Disable"
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:115
+msgid "Enable Bank of Maldives Payment Gateway"
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:118
+msgid "Title"
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:121
+msgid "This controls the title which the user sees during checkout."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:123
+msgid "Bank of Maldives"
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:125
+msgid "Description"
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:128
+msgid "This controls the description which the user sees during checkout."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:129
+msgid "Pay securely using your BML account."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:132
+msgid "Test Mode"
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:135
+msgid "Enable Test Mode"
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:137
+msgid "Use the testing environment instead of production."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:139
+msgid "Connection Details"
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:141
+msgid "Enter your BML Connect API credentials. Get these from the <a href=\"https://dashboard.merchants.bankofmaldives.com.mv\" target=\"_blank\">BML Merchant Portal</a>."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:144
+msgid "App ID"
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:147
+msgid "Enter your App ID (client_id) from BML Connect."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:151
+msgid "API Key"
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:154
+msgid "Enter your API Key (client_secret) from BML Connect."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:158
+msgid "Transaction Currency"
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:161
+msgid "Select the currency for transactions."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:165
+msgid "MVR - Maldivian Rufiyaa"
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:166
+msgid "USD - US Dollar"
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:169
+msgid "Webhook Configuration"
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:198
+msgid "Configure your webhook URL in the <a href=\"https://dashboard.merchants.bankofmaldives.com.mv\" target=\"_blank\">BML Merchant Portal</a> to receive server-to-server payment notifications."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:205
+msgid "Configure your webhook URL in the <a href=\"https://dashboard.merchants.bankofmaldives.com.mv\" target=\"_blank\">BML Merchant Portal</a> to receive server-to-server payment notifications (POST).<br><strong>Webhook URL:</strong> <code style=\"background:#f0f0f1;padding:4px 8px;border-radius:3px;font-size:12px;\">%s</code>"
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:173
+msgid "Endpoint Information"
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:217
+msgid "Webhook and return endpoints are automatically configured."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:226
+msgid "<strong>Webhook Endpoint</strong> (for BML server-to-server notifications):<br><code style=\"background:#f0f0f1;padding:4px 8px;border-radius:3px;font-size:12px;\">%1$s</code><br><br><strong>Return Endpoint</strong> (for customer redirects after payment):<br><code style=\"background:#f0f0f1;padding:4px 8px;border-radius:3px;font-size:12px;\">%2$s</code>"
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:179
+msgid "Disable Redirect (Testing)"
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:182
+msgid "Disable customer redirect after payment (for webhook testing only)"
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:184
+msgid "When enabled, customers will not be redirected after payment. The webhook will still be processed. This is useful for testing webhooks without customer redirects."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:328
+msgid "Unauthorized - Please check your App ID and API Key"
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:332
+msgid "Unknown API error"
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:401
+msgid "Payment gateway is not configured properly. Please contact the site administrator."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:404
+msgid "Payment gateway configuration error."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:412
+msgid "Payment error: %s"
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:437
+msgid "Payment error: No redirect URL received from BML."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:440
+msgid "Unable to redirect to payment page."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:527
+msgid "BML payment confirmed via webhook. Transaction ID: %s"
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:533
+msgid "Payment was cancelled via webhook."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:538
+msgid "Payment was refunded via webhook."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:543
+msgid "Refund requested via webhook."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:576
+msgid "Invalid order."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:584
+msgid "Invalid order key."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:594
+msgid "Transaction not found."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:604
+msgid "Could not verify payment status: %s"
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:662
+msgid "Failed to query transaction status."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:683
+msgid "BML payment completed. Transaction ID: %s"
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:688
+msgid "Payment was cancelled by the customer."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:689
+msgid "Your payment has been cancelled."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:695
+msgid "Waiting for BML payment confirmation."
+msgstr ""
+
+#: includes/class-bml-gateway-payment-gateway.php:696
+msgid "Your payment is being processed. You will receive a confirmation shortly."
+msgstr ""
+
+#: includes/class-bml-gateway-blocks-integration.php:73
+#: includes/class-bml-gateway-blocks-integration.php:92
+msgid "Pay securely using your BML account."
+msgstr ""
