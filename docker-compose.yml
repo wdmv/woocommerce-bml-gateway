@@ -1,0 +1,85 @@
+version: '3.8'
+
+services:
+  wordpress:
+    image: wordpress:latest
+    container_name: bml-wp-wordpress
+    ports:
+      - '8080:80'
+    env_file:
+      - .env
+    environment:
+      WWW_USER: ${WWW_USER:-1000}
+      WWW_GROUP: ${WWW_GROUP:-1000}
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: bml_gateway_dev
+      WORDPRESS_DEBUG: 1
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_DEBUG_LOG', true);
+        define('WP_DEBUG_DISPLAY', false);
+        define('SCRIPT_DEBUG', true);
+        define('FS_METHOD', 'direct');
+    volumes:
+      - ./wp-content:/var/www/html/wp-content
+      - ./plugin:/var/www/html/wp-content/plugins/bml-gateway
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:8.0
+    container_name: bml-wp-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: bml_gateway_dev
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    ports:
+      - '3307:3306'
+    volumes:
+      - dbdata:/var/lib/mysql
+    healthcheck:
+      test:
+        [
+          'CMD',
+          'mysqladmin',
+          'ping',
+          '-h',
+          'localhost',
+          '-u',
+          'root',
+          '-prootpassword',
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: bml-wp-phpmyadmin
+    ports:
+      - '8081:80'
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: rootpassword
+      UPLOAD_LIMIT: 100M
+    depends_on:
+      - db
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: bml-wp-mailhog
+    ports:
+      - '1025:1025'
+      - '8082:8025'
+
+volumes:
+  dbdata:
+
+networks:
+  default:
+    name: bml-wp-network
